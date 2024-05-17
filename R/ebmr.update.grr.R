@@ -126,7 +126,7 @@ ridge_indep_em3 = function(y, d2, ss = 0, df = 0, tol=1e-3, maxiter=1000, s2.ini
     ll = ll - (df/2)*log(2*pi*s2) - ss/(2*s2)
     loglik= c(loglik,ll)
 
-    if((loglik[i+1]-loglik[i])<tol) break
+    if(is.nan(ll) || (loglik[i+1]-loglik[i])<tol) break
   }
   return(list(s2=s2,sb2=sb2*l2/s2,loglik=loglik))
 }
